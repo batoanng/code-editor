@@ -8,7 +8,7 @@
     "start": "lerna run start --parallel"
   },
   "dependencies": {
-    "eslint": "^8.11.0",
+    "eslint": "^7.11.0",
     "prettier": "^2.6.0"
   }
 }
