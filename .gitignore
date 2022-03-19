@@ -4,3 +4,6 @@
 # production
 /build
 
+#lerna
+lerna-debug.log
+
