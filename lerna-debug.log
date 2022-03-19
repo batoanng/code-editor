@@ -1,0 +1,105 @@
+0 silly argv {
+0 silly argv   _: [ 'bootstrap' ],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': '/Users/toannguyen/Downloads/PROJECTS/online-code-editor/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath /Users/toannguyen/Downloads/PROJECTS/online-code-editor
+3 silly npmConfig {
+3 silly npmConfig   registry: undefined,
+3 silly npmConfig   npmClient: 'npm',
+3 silly npmConfig   npmClientArgs: [],
+3 silly npmConfig   mutex: undefined
+3 silly npmConfig }
+4 info Bootstrapping 2 packages
+5 verbose lifecycle preinstall
+6 silly lifecycle No script for "preinstall" in "bundler", continuing
+7 silly lifecycle No script for "preinstall" in "jbook", continuing
+8 silly hasDependencyInstalled bundler webpack
+9 silly hasDependencyInstalled bundler webpack-cli
+10 silly hasDependencyInstalled jbook @testing-library/jest-dom
+11 silly hasDependencyInstalled jbook @testing-library/react
+12 silly hasDependencyInstalled jbook @testing-library/user-event
+13 silly hasDependencyInstalled jbook @types/jest
+14 silly hasDependencyInstalled jbook @types/node
+15 silly hasDependencyInstalled jbook @types/react
+16 silly hasDependencyInstalled jbook @types/react-dom
+17 silly hasDependencyInstalled jbook esbuild-wasm
+18 silly hasDependencyInstalled jbook react
+19 silly hasDependencyInstalled jbook react-dom
+20 silly hasDependencyInstalled jbook react-scripts
+21 silly hasDependencyInstalled jbook typescript
+22 silly hasDependencyInstalled jbook web-vitals
+23 silly root dependencies {}
+24 silly leaf dependencies {}
+25 info Installing external dependencies
+26 verbose actions 2 actions, concurrency 4
+27 silly npmInstallDependencies bundler [ 'webpack@5.11.1', 'webpack-cli@4.3.0' ]
+28 silly npmInstallDependencies backup /Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/bundler/package.json
+29 silly npmInstallDependencies jbook [
+29 silly npmInstallDependencies   '@testing-library/jest-dom@^5.11.8',
+29 silly npmInstallDependencies   '@testing-library/react@^11.2.2',
+29 silly npmInstallDependencies   '@testing-library/user-event@^12.6.0',
+29 silly npmInstallDependencies   '@types/jest@^26.0.19',
+29 silly npmInstallDependencies   '@types/node@^12.19.11',
+29 silly npmInstallDependencies   '@types/react@^16.14.2',
+29 silly npmInstallDependencies   '@types/react-dom@^16.9.10',
+29 silly npmInstallDependencies   'esbuild-wasm@0.8.27',
+29 silly npmInstallDependencies   'react@^17.0.1',
+29 silly npmInstallDependencies   'react-dom@^17.0.1',
+29 silly npmInstallDependencies   'react-scripts@4.0.1',
+29 silly npmInstallDependencies   'typescript@^4.1.3',
+29 silly npmInstallDependencies   'web-vitals@^0.2.4'
+29 silly npmInstallDependencies ]
+30 silly npmInstallDependencies backup /Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/jbook/package.json
+31 silly npmInstallDependencies writing tempJson {
+31 silly npmInstallDependencies   name: 'bundler',
+31 silly npmInstallDependencies   version: '1.0.0',
+31 silly npmInstallDependencies   description: '',
+31 silly npmInstallDependencies   main: 'index.js',
+31 silly npmInstallDependencies   keywords: [],
+31 silly npmInstallDependencies   author: '',
+31 silly npmInstallDependencies   license: 'ISC',
+31 silly npmInstallDependencies   dependencies: { webpack: '5.11.1', 'webpack-cli': '4.3.0' }
+31 silly npmInstallDependencies }
+32 silly npmInstallDependencies writing tempJson {
+32 silly npmInstallDependencies   name: 'jbook',
+32 silly npmInstallDependencies   version: '0.1.0',
+32 silly npmInstallDependencies   private: true,
+32 silly npmInstallDependencies   dependencies: {
+32 silly npmInstallDependencies     '@testing-library/jest-dom': '^5.11.8',
+32 silly npmInstallDependencies     '@testing-library/react': '^11.2.2',
+32 silly npmInstallDependencies     '@testing-library/user-event': '^12.6.0',
+32 silly npmInstallDependencies     '@types/jest': '^26.0.19',
+32 silly npmInstallDependencies     '@types/node': '^12.19.11',
+32 silly npmInstallDependencies     '@types/react': '^16.14.2',
+32 silly npmInstallDependencies     '@types/react-dom': '^16.9.10',
+32 silly npmInstallDependencies     'esbuild-wasm': '0.8.27',
+32 silly npmInstallDependencies     react: '^17.0.1',
+32 silly npmInstallDependencies     'react-dom': '^17.0.1',
+32 silly npmInstallDependencies     'react-scripts': '4.0.1',
+32 silly npmInstallDependencies     typescript: '^4.1.3',
+32 silly npmInstallDependencies     'web-vitals': '^0.2.4'
+32 silly npmInstallDependencies   },
+32 silly npmInstallDependencies   eslintConfig: { extends: [ 'react-app', 'react-app/jest' ] },
+32 silly npmInstallDependencies   browserslist: {
+32 silly npmInstallDependencies     production: [ '>0.2%', 'not dead', 'not op_mini all' ],
+32 silly npmInstallDependencies     development: [
+32 silly npmInstallDependencies       'last 1 chrome version',
+32 silly npmInstallDependencies       'last 1 firefox version',
+32 silly npmInstallDependencies       'last 1 safari version'
+32 silly npmInstallDependencies     ]
+32 silly npmInstallDependencies   }
+32 silly npmInstallDependencies }
+33 silly getExecOpts /Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/jbook undefined
+34 silly npmInstall [ 'npm', [ 'install' ] ]
+35 silly getExecOpts /Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/bundler undefined
+36 silly npmInstall [ 'npm', [ 'install' ] ]
+37 silly npmInstallDependencies cleanup /Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/bundler/package.json
+38 verbose installed leaf bundler
+39 silly npmInstallDependencies cleanup /Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/jbook/package.json
+40 error Error: ENOENT: no such file or directory, rename '/Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/jbook/package.json.lerna_backup' -> '/Users/toannguyen/Downloads/PROJECTS/online-code-editor/packages/jbook/package.json'
+40 error     at Object.renameSync (node:fs:980:3)
+40 error     at cleanup (/Users/toannguyen/Downloads/PROJECTS/online-code-editor/node_modules/@lerna/npm-install/npm-install.js:70:10)
+40 error     at done (/Users/toannguyen/Downloads/PROJECTS/online-code-editor/node_modules/@lerna/npm-install/npm-install.js:78:7)
+40 error     at runMicrotasks (<anonymous>)
