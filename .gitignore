@@ -1,9 +1,18 @@
-# dependencies
 /node_modules
-
-# production
 /build
+.idea
+
+#SonarQube
+reports/
+.scannerwork/
+
+.eslintcache
+
+coverage
+
+lib-cov
+
+yarn-error.log
 
 #lerna
 lerna-debug.log
-

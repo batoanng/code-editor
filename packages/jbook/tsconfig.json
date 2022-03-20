@@ -1,26 +1,53 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+    "compilerOptions": {
+        "baseUrl": "./",
+        "rootDir": "./src",
+        "target": "esnext",
+        "module": "esnext",
+        "sourceMap": true,
+        "inlineSourceMap": false,
+        "inlineSources": true,
+        "declaration": true,
+        "declarationMap": true,
+        "noEmitOnError": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "noImplicitThis": true,
+        "importHelpers": true,
+        "allowSyntheticDefaultImports": true,
+        "suppressExcessPropertyErrors": true,
+        "outDir": "./build",
+        "esModuleInterop": true,
+        "noUnusedLocals": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "removeComments": false,
+        "allowJs": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "downlevelIteration": true,
+        "skipLibCheck": true,
+        "jsx": "react-jsx",
+        "lib": [
+            "dom",
+            "es2017",
+            "esnext"
+        ],
+        "resolveJsonModule": true,
+        "strict": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "exclude": [
+        "**/node_modules",
+        "**/dist",
+        "**/module",
+        "packages/*/**/*.test.ts"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  "include": [
-    "src"
-  ]
+    "include": [
+        "./src/*/**/*.ts",
+        "./src/*/**/*.tsx",
+        "./src/*/**/*.d.ts",
+        "*.d.ts"
+    ]
 }
