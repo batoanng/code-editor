@@ -2,7 +2,8 @@
     "name": "root",
     "private": true,
     "scripts": {
-        "start": "lerna run start --parallel"
+        "start": "lerna run start --parallel",
+        "lint": "lerna run lint --parallel"
     },
     "devDependencies": {
         "lerna": "^3.22.1",
@@ -20,5 +21,8 @@
         "prettier": "^2.4.0",
         "typescript": "^4.6.2",
         "typescript-plugin-styled-components": "^2.0.0"
-    }
+    },
+    "workspaces": [
+        "packages/jbook"
+    ]
 }
