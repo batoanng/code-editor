@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "baseUrl": "./",
-        "rootDir": "./src",
         "target": "esnext",
         "module": "esnext",
         "sourceMap": true,
@@ -17,7 +16,6 @@
         "importHelpers": true,
         "allowSyntheticDefaultImports": true,
         "suppressExcessPropertyErrors": true,
-        "outDir": "./build",
         "esModuleInterop": true,
         "noUnusedLocals": true,
         "isolatedModules": false,

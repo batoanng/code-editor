@@ -6,7 +6,6 @@
         "lint": "lerna run lint --parallel"
     },
     "devDependencies": {
-        "lerna": "^3.22.1",
         "@typescript-eslint/eslint-plugin": "^5.15.0",
         "@typescript-eslint/parser": "^5.15.0",
         "enzyme-to-json": "^3.6.2",
@@ -16,6 +15,7 @@
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-prettier": "^4.0.0",
         "ignore-styles": "^5.0.1",
+        "lerna": "^4.0.0",
         "lint-staged": "^11.0.0",
         "open-cli": "6.0.1",
         "prettier": "^2.4.0",

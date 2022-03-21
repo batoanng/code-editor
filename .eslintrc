@@ -36,6 +36,12 @@
 
         "consistent-return": "warn",
         "no-await-in-loop": "warn",
-        "no-continue": "warn"
+        "no-continue": "warn",
+
+        /**
+        * Fix 'React' was used before it was defined
+        */
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"]
     }
 }
