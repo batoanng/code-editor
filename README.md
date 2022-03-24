@@ -13,3 +13,5 @@ Users are able to build tech note with markdown syntax, also use code editor to 
         - solution: 
           - We need to build a plugin to intercept ESBuild and find the path should be for the dependencies.
           - Use [unpkg](https://unpkg.com) to overcome CORS issue when we get the package from npm: unpkg will redirect to main file (index) of current version of dependencies.
+            - Issue with multiple and nested packages: Build a plugins to resolve file path, separate index file and other relative path.
+            - Issue with too much request call for 1 packages: use [localForage](https://www.npmjs.com/package/localforage) to cache requests.
