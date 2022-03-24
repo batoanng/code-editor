@@ -1,7 +1,6 @@
 import * as esbuild from 'esbuild-wasm';
 import axios from 'axios';
 import localForage from 'localforage';
-import { OnLoadResult } from 'esbuild-wasm';
 
 const fileCache = localForage.createInstance({
     name: 'fileCache'
