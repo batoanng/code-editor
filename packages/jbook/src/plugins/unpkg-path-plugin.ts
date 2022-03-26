@@ -6,41 +6,42 @@ const fileCache = localForage.createInstance({
     name: 'fileCache'
 });
 
-export const unpkgPathPlugin = () => {
+export const unpkgPathPlugin = (inputCode: string) => {
     return {
         name: 'unpkg-path-plugin',
         setup(build: esbuild.PluginBuild) {
-            build.onResolve({ filter: /.*/ }, async (args: any) => {
-                console.log('onResolve', args);
-                if (args.path === 'index.js') {
-                    return { path: args.path, namespace: 'a' };
-                }
+            /**
+             * Handle root entry files
+             */
+            build.onResolve({ filter: /(^index\.js$)/ }, (args: any) => {
+                return { path: args.path, namespace: 'a' };
+            });
 
-                /**
-                 * This solves issue import multiple files
-                 */
-                if (args.path.includes('./') || args.path.includes('../')) {
-                    return {
-                        namespace: 'a',
-                        path: new URL(args.path, `https://unpkg.com${args.resolveDir}/`).href
-                    };
-                }
+            /**
+             * This solves issue import multiple files
+             */
+            build.onResolve({ filter: /^\.+\// }, (args: any) => {
+                return {
+                    namespace: 'a',
+                    path: new URL(args.path, `https://unpkg.com${args.resolveDir}/`).href
+                };
+            });
+
+            build.onResolve({ filter: /.*/ }, (args: any) => {
                 return {
                     namespace: 'a',
                     path: `https://unpkg.com/${args.path}`
                 };
             });
 
+            /**
+             * Handle main files of module
+             */
             build.onLoad({ filter: /.*/ }, async (args: any) => {
-                console.log('onLoad', args);
-
                 if (args.path === 'index.js') {
                     return {
                         loader: 'jsx',
-                        contents: `
-                          const message = require('@joker7t/common-utils');
-                          console.log(message);
-                        `
+                        contents: inputCode
                     };
                 }
 
