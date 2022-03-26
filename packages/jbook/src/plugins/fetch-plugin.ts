@@ -28,9 +28,24 @@ export const fetchPlugin = (inputCode: string) => {
                 }
 
                 const { data, request } = await axios.get(args.path);
+
+                // When do load css packages ESBuild returns 2 files: js and css
+                // css file does not have any place to store
+                // So we must do it manually
+                const fileType = args.path.match(/.css$/) ? 'css' : 'jsx';
+                const escaped = data.replace(/\n/g, '').replace(/"/g, '\\"').replace(/'/g, "\\'");
+                const contents =
+                    fileType === 'css'
+                        ? `
+                            const style = document.createElement('style');
+                            style.innerText = '${escaped}';
+                            document.head.appendChild(style);
+                        `
+                        : data;
+
                 const result: esbuild.OnLoadResult = {
                     loader: 'jsx',
-                    contents: data,
+                    contents,
                     resolveDir: new URL('./', request.responseURL).pathname // This returns exactly file path of nested file instead of path of index file
                 };
 
