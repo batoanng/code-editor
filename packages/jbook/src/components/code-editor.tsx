@@ -51,26 +51,24 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
     };
 
     const monacoEditor = useMemo(
-        function () {
-            return (
-                <MonacoEditor
-                    value={initialValue}
-                    editorDidMount={onEditorDidMount}
-                    theme="vs-dark"
-                    language="javascript"
-                    height="500px"
-                    options={{
-                        wordWrap: 'on',
-                        folding: false,
-                        lineNumbersMinChars: 3,
-                        tabSize: 2,
-                        fontSize: 16,
-                        scrollBeyondLastLine: false,
-                        automaticLayout: true
-                    }}
-                />
-            );
-        },
+        () => (
+            <MonacoEditor
+                value={initialValue}
+                editorDidMount={onEditorDidMount}
+                theme="vs-dark"
+                language="javascript"
+                height="500px"
+                options={{
+                    wordWrap: 'on',
+                    folding: false,
+                    lineNumbersMinChars: 3,
+                    tabSize: 2,
+                    fontSize: 16,
+                    scrollBeyondLastLine: false,
+                    automaticLayout: true
+                }}
+            />
+        ),
         [initialValue, onChange]
     );
 
