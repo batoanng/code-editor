@@ -15,3 +15,14 @@ Users are able to build tech note with markdown syntax, also use code editor to 
           - Use [unpkg](https://unpkg.com) to overcome CORS issue when we get the package from npm: unpkg will redirect to main file (index) of current version of dependencies.
             - Issue with multiple and nested packages: Build a plugins to resolve file path, separate index file and other relative path.
             - Issue with too much request call for 1 packages: use [localForage](https://www.npmjs.com/package/localforage) to cache requests.
+   2. Challenges when execute user code
+      - Code will be provided to preview as a string, we have to execute it safely.
+      - This code may have advance js syntax in it that your browser cannot execute.
+      - This code may have import statements from other js or css libraries. We have to deal with those import statements before execute the code.
+   3. Issues with untrusted code
+      - User provides code might throw errors and cause a program to crash.
+      - User provides code might mutate the DOM, causing our program to crash.
+      - User might accidentally run code provided by another malicious users.
+   
+      => This can be solved by running user's code in IFrame with direct communication disabled.
+   4. 
