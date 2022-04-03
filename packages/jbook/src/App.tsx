@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as esbuild from 'esbuild-wasm';
 import { fetchPlugin, unpkgPathPlugin } from './plugins';
 
 const App = () => {
     const [input, setInput] = useState('');
     const [code, setCode] = useState('');
+    const iframe = useRef<any>();
     const [bundler, setBundler] = useState<any>(null);
 
     const startService = async () => {
@@ -44,13 +45,27 @@ const App = () => {
                 global: 'window'
             }
         });
-        setCode(result.outputFiles[0].text);
+        // setCode(result.outputFiles[0].text);
+
+        /**
+         * Instead of use set code, we use this to overcome passing event from parent to child
+         * Also pass code as a string, prevent case unescaped code
+         */
+        iframe.current.contentWindow.postMessage(result.outputFiles[0].text, '*');
     };
 
     const html = `
-        <script>
-            ${code}
-        </script>
+        <html>
+            <head></head>
+            <body>
+                <div id="root"></div>
+                <script>
+                    window.addEventListener('message', (event) => {
+                        eval(event.data);
+                    }, false);
+                </script>
+            </body>
+        </html>
     `;
 
     return (
@@ -60,7 +75,7 @@ const App = () => {
                 <button onClick={onClick}>Submit</button>
             </div>
             <pre>{code}</pre>
-            <iframe sandbox="allow-scripts" srcDoc={html} />
+            <iframe sandbox="allow-scripts" srcDoc={html} ref={iframe} />
         </div>
     );
 };
