@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as esbuild from 'esbuild-wasm';
 import { fetchPlugin, unpkgPathPlugin } from './plugins';
-import CodeEditor from './components/code-editor';
+import CodeEditor, { CodeEditorProps } from './components/code-editor';
 
 const App = () => {
     const [input, setInput] = useState('');
@@ -35,9 +35,6 @@ const App = () => {
         });
         setBundler(esBuildBundler);
     };
-    useEffect(() => {
-        startService().then();
-    }, []);
 
     const onClick = async () => {
         if (!bundler) {
@@ -76,9 +73,18 @@ const App = () => {
         iframe.current.contentWindow.postMessage(result.outputFiles[0].text, '*');
     };
 
+    useEffect(() => {
+        startService().then();
+    }, []);
+
+    const codeEditorProps: CodeEditorProps = {
+        initialValue: 'const a = 1;',
+        onChange: (value) => setInput(value)
+    };
+
     return (
         <div>
-            <CodeEditor />
+            <CodeEditor {...codeEditorProps} />
             <textarea value={input} onChange={(e) => setInput(e.target.value)} />
             <div>
                 <button onClick={onClick}>Submit</button>
