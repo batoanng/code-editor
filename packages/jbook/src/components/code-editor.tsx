@@ -1,3 +1,4 @@
+import '../libs/syntax.css';
 import React, { useMemo, useState } from 'react';
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
 import prettier from 'prettier';
@@ -57,6 +58,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
                 editorDidMount={onEditorDidMount}
                 theme="vs-dark"
                 language="javascript"
+                className="editor-wrapper"
                 height="500px"
                 options={{
                     wordWrap: 'on',
