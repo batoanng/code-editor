@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as esbuild from 'esbuild-wasm';
 import { fetchPlugin, unpkgPathPlugin } from './plugins';
+import CodeEditor from './components/code-editor';
 
 const App = () => {
     const [input, setInput] = useState('');
-    const [code, setCode] = useState('');
     const iframe = useRef<any>();
     const [bundler, setBundler] = useState<any>(null);
 
     const html = `
-        <html>
-            <head></head>
+        <html lang='en'>
+            <head title='Code Preview'><title>Code Preview</title></head>
             <body>
-                <div id="root"></div>
+                <div id='root'></div>
                 <script>
                     window.addEventListener('message', (event) => {
                         try {
@@ -36,7 +36,7 @@ const App = () => {
         setBundler(esBuildBundler);
     };
     useEffect(() => {
-        startService();
+        startService().then();
     }, []);
 
     const onClick = async () => {
@@ -78,12 +78,12 @@ const App = () => {
 
     return (
         <div>
+            <CodeEditor />
             <textarea value={input} onChange={(e) => setInput(e.target.value)} />
             <div>
                 <button onClick={onClick}>Submit</button>
             </div>
-            <pre>{code}</pre>
-            <iframe sandbox="allow-scripts" srcDoc={html} ref={iframe} />
+            <iframe title="Code Preview" sandbox="allow-scripts" srcDoc={html} ref={iframe} />
         </div>
     );
 };

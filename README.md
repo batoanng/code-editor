@@ -25,4 +25,4 @@ Users are able to build tech note with markdown syntax, also use code editor to 
       - User might accidentally run code provided by another malicious users.
    
       => This can be solved by running user's code in IFrame with direct communication disabled.
-   4. 
+4. Use an open source editor to write code: [@monaco-editor/react](https://www.npmjs.com/package/@monaco-editor/react) gives an almost-perfect editing experience immediately
