@@ -22,6 +22,7 @@ const StyleButton = styled.div`
 const StyleEditor = styled.div`
     position: relative;
     height: 100%;
+    width: calc(100% - 10px);
 
     &:hover ${StyleButton} {
         opacity: 1;
@@ -59,7 +60,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
                 theme="vs-dark"
                 language="javascript"
                 className="editor-wrapper"
-                height="500px"
+                height="100%"
                 options={{
                     wordWrap: 'on',
                     folding: false,
