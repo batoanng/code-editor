@@ -27,9 +27,9 @@ const CodeCell = () => {
     };
 
     return (
-        <Resizable direct="vertical">
+        <Resizable direction="vertical">
             <StyleCell>
-                <Resizable direct="horizontal">
+                <Resizable direction="horizontal">
                     <CodeEditor {...codeEditorProps} />
                 </Resizable>
                 <Preview code={code} />
