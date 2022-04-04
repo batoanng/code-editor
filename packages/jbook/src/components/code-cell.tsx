@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CodeEditor, { CodeEditorProps } from './code-editor';
 import Preview from './preview';
@@ -16,11 +16,16 @@ const CodeCell = () => {
     const [input, setInput] = useState('');
     const [code, setCode] = useState('');
 
-    const onClick = async () => {
-        const compiledCode = await bundler(input);
+    useEffect(() => {
+        const timer = setTimeout(async () => {
+            const compiledCode = await bundler(input);
+            setCode(compiledCode);
+        }, 1000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [input]);
 
-        setCode(compiledCode);
-    };
     const codeEditorProps: CodeEditorProps = {
         initialValue: 'const a = 1;',
         onChange: (value) => setInput(value)
