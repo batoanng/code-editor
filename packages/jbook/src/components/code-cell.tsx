@@ -12,6 +12,10 @@ const StyleCell = styled.div`
     flex-direction: row;
 `;
 
+const StyleCellContainer = styled.div`
+    margin-bottom: 10px;
+`;
+
 const CodeCell = () => {
     const [input, setInput] = useState('');
     const [code, setCode] = useState('');
@@ -34,14 +38,16 @@ const CodeCell = () => {
     };
 
     return (
-        <Resizable direction="vertical">
-            <StyleCell>
-                <Resizable direction="horizontal">
-                    <CodeEditor {...codeEditorProps} />
-                </Resizable>
-                <Preview code={code} err={err} />
-            </StyleCell>
-        </Resizable>
+        <StyleCellContainer>
+            <Resizable direction="vertical">
+                <StyleCell>
+                    <Resizable direction="horizontal">
+                        <CodeEditor {...codeEditorProps} />
+                    </Resizable>
+                    <Preview code={code} err={err} />
+                </StyleCell>
+            </Resizable>
+        </StyleCellContainer>
     );
 };
 
