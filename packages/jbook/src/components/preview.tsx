@@ -3,6 +3,9 @@ import React, { useEffect, useRef } from 'react';
 
 export interface PreviewProps {
     code: string;
+    // Instead of solving CORS when communicate between root and iframe
+    // use this prop to render the bundling error
+    err: string;
 }
 
 const html = `
@@ -18,21 +21,29 @@ const html = `
         <body>
             <div id='root'></div>
             <script>
+                const handleError = err => {
+                    const rootEl = document.querySelector('#root');
+                    rootEl.innerHTML = '<div style="color: red"><h4>Runtime Error</h4>' + err + '</div>';
+                    throw err;
+                }
+
+                // This is used to handle the async error (ex. error from setTimeOut)
+                // catch async error and process the same as sync error
+                // event.preventDefault(); is used to prevent the default log error
+                window.addEventListener('error', (event) => {
+                    event.preventDefault();
+                    handleError(event.error);
+                });
+
                 window.addEventListener('message', (event) => {
-                    try {
-                      eval(event.data);
-                    } catch (e) {
-                        const rootEl = document.querySelector('#root');
-                        rootEl.innerHTML = '<div style="color: red"><h4>Runtime Error</h4>' + e + '</div>';
-                        throw e;
-                    }
+                    eval(event.data);
                 }, false);
             </script>
         </body>
     </html>
 `;
 
-const Preview: React.FC<PreviewProps> = ({ code }) => {
+const Preview: React.FC<PreviewProps> = ({ code, err }) => {
     const iframe = useRef<any>();
 
     useEffect(() => {
@@ -57,6 +68,7 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
                 height="100%"
                 width="100%"
             />
+            {err && <div className="preview-error">{err}</div>}
         </div>
     );
 };

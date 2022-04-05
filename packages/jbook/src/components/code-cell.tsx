@@ -15,11 +15,13 @@ const StyleCell = styled.div`
 const CodeCell = () => {
     const [input, setInput] = useState('');
     const [code, setCode] = useState('');
+    const [err, setErr] = useState('');
 
     useEffect(() => {
         const timer = setTimeout(async () => {
             const compiledCode = await bundler(input);
-            setCode(compiledCode);
+            setCode(compiledCode.code);
+            setErr(compiledCode.err);
         }, 1000);
         return () => {
             clearTimeout(timer);
@@ -37,7 +39,7 @@ const CodeCell = () => {
                 <Resizable direction="horizontal">
                     <CodeEditor {...codeEditorProps} />
                 </Resizable>
-                <Preview code={code} />
+                <Preview code={code} err={err} />
             </StyleCell>
         </Resizable>
     );
