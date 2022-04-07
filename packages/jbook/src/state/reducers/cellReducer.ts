@@ -27,7 +27,16 @@ const reducer = (state: CellState = initialState, action: Action) => {
         case ActionType.INSERT_CELL_BEFORE:
             return state;
         case ActionType.UPDATE_CELL:
-            return state;
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    [action.payload.id]: {
+                        ...state.data[action.payload.id],
+                        content: action.payload.content
+                    }
+                }
+            };
         default:
             return state;
     }
