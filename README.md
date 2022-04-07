@@ -26,3 +26,4 @@ Users are able to build tech note with markdown syntax, also use code editor to 
    
       => This can be solved by running user's code in IFrame with direct communication disabled.
 4. Use an open source editor to write code: [@monaco-editor/react](https://www.npmjs.com/package/@monaco-editor/react) gives an almost-perfect editing experience immediately
+5. Using [Redux](https://redux.js.org/) to centralize all the states of cell and bundled code, every component can watch to this and do update, prevent props drilling
