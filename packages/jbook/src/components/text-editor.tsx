@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../libs/text-editor.css';
 import MDEditor from '@uiw/react-md-editor';
+import { Cell } from '../state';
 
-export interface TextEditorProps {}
+export interface TextEditorProps {
+    cell: Cell;
+}
 
-const TextEditor: React.FC<TextEditorProps> = () => {
+const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
     const [value, setValue] = useState('**Hello world!!!**');
     const [isEditing, setIsEditing] = useState(false);
     const editorRef = useRef<HTMLDivElement>(null);

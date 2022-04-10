@@ -23,7 +23,7 @@ const randomId = () => {
     return Math.random().toString(36).substring(2, 5);
 };
 
-const reducer = produce((state: CellState = initialState, action: Action): CellState | void => {
+const reducer = produce((state: CellState = initialState, action: Action): CellState => {
     switch (action.type) {
         case ActionType.MOVE_CELL:
             const { direction, id: payloadId } = action.payload;
@@ -65,6 +65,6 @@ const reducer = produce((state: CellState = initialState, action: Action): CellS
             // Immer will mark state can be undefined if no returns
             return state;
     }
-});
+}, initialState);
 
 export default reducer;
