@@ -23,7 +23,6 @@ export interface CodeCellProps {
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-    const [input, setInput] = useState('');
     const [code, setCode] = useState('');
     const [err, setErr] = useState('');
     const { updateCell } = useActions();

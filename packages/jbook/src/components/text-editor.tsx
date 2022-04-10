@@ -2,15 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../libs/text-editor.css';
 import MDEditor from '@uiw/react-md-editor';
 import { Cell } from '../state';
+import { useActions } from '../hooks/use-actions';
 
 export interface TextEditorProps {
     cell: Cell;
 }
 
 const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
-    const [value, setValue] = useState('**Hello world!!!**');
     const [isEditing, setIsEditing] = useState(false);
     const editorRef = useRef<HTMLDivElement>(null);
+    const { updateCell } = useActions();
 
     useEffect(() => {
         // Handle click to outside of markdown editor will close editor
@@ -29,7 +30,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
     if (isEditing) {
         return (
             <div className="text-editor" ref={editorRef}>
-                <MDEditor value={value} onChange={(val) => setValue(val || '')} />
+                <MDEditor value={cell.content} onChange={(val) => updateCell(cell.id, val || '')} />
             </div>
         );
     }
@@ -37,7 +38,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
     return (
         <div className="text-editor card" onClick={() => setIsEditing(true)}>
             <div className="card-content">
-                <MDEditor.Markdown source={value} />
+                <MDEditor.Markdown source={cell.content} />
             </div>
         </div>
     );
