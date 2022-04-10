@@ -38,12 +38,14 @@
         "no-await-in-loop": "warn",
         "no-continue": "warn",
 
-        /**
-        * Fix 'React' was used before it was defined
-        */
+        // Fix 'React' was used before it was defined
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "default-param-last": "off",
-        "no-shadow": "off"
+        "no-shadow": "off",
+        "no-case-declarations": "off",
+
+        // Fix case reassign with Immer
+        "no-param-reassign": "off"
     }
 }
