@@ -5,7 +5,7 @@ import CellListItem from './cell-list-item';
 import AddCell from './add-cell';
 
 const CellListStyle = styled.div`
-    padding-top: 20px;
+    padding: 20px 0;
 `;
 
 export interface CellListProps {}
@@ -15,15 +15,15 @@ const CellList: React.FC<CellListProps> = () => {
 
     const renderCells = cells.map((cell) => (
         <div key={cell.id}>
-            <AddCell nextCellId={cell.id} />
             <CellListItem cell={cell} />
+            <AddCell previousCellId={cell.id} />
         </div>
     ));
 
     return (
         <CellListStyle>
+            <AddCell previousCellId={null} isVisible={cells.length <= 0} />
             {renderCells}
-            <AddCell nextCellId={null} isVisible={cells.length <= 0} />
         </CellListStyle>
     );
 };

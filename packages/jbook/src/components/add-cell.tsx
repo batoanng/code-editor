@@ -37,17 +37,17 @@ const DividerStyle = styled.div`
 `;
 
 export interface AddCellProps {
-    nextCellId: string | null;
+    previousCellId: string | null;
     isVisible?: boolean;
 }
 
-const AddCell: React.FC<AddCellProps> = ({ nextCellId, isVisible }) => {
-    const { insertCellBefore } = useActions();
+const AddCell: React.FC<AddCellProps> = ({ previousCellId, isVisible }) => {
+    const { insertCellAfter } = useActions();
     return (
         <AddCellStyle isVisible={isVisible}>
             <button
                 className="button is-rounded is-primary is-small"
-                onClick={() => insertCellBefore(nextCellId, 'code')}
+                onClick={() => insertCellAfter(previousCellId, 'code')}
             >
                 <span className="icon is-small">
                     <i className="fas fa-plus" />
@@ -56,7 +56,7 @@ const AddCell: React.FC<AddCellProps> = ({ nextCellId, isVisible }) => {
             </button>
             <button
                 className="button is-rounded is-primary is-small"
-                onClick={() => insertCellBefore(nextCellId, 'text')}
+                onClick={() => insertCellAfter(previousCellId, 'text')}
             >
                 <span className="icon is-small">
                     <i className="fas fa-plus" />
