@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import CodeEditor, { CodeEditorProps } from './code-editor';
 import Preview from './preview';
-import bundler from '../bundler';
 import Resizable from './resizable';
 import { Cell } from '../state';
 import { useActions } from '../hooks/use-actions';
+import { useTypedSelector } from '../hooks/use-typed-selector';
 
 const StyleCell = styled.div`
     height: 100%;
@@ -23,20 +23,17 @@ export interface CodeCellProps {
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-    const [code, setCode] = useState('');
-    const [err, setErr] = useState('');
-    const { updateCell } = useActions();
+    const { updateCell, createBundle } = useActions();
+    const bundle = useTypedSelector(({ bundles }) => bundles[cell.id]);
 
     useEffect(() => {
         const timer = setTimeout(async () => {
-            const compiledCode = await bundler(cell.content);
-            setCode(compiledCode.code);
-            setErr(compiledCode.err);
+            await createBundle(cell.id, cell.content);
         }, 1000);
         return () => {
             clearTimeout(timer);
         };
-    }, [cell.content]);
+    }, [cell.id, cell.content]);
 
     const codeEditorProps: CodeEditorProps = {
         initialValue: cell.content,
@@ -50,7 +47,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
                     <Resizable direction="horizontal">
                         <CodeEditor {...codeEditorProps} />
                     </Resizable>
-                    <Preview code={code} err={err} />
+                    {bundle && <Preview code={bundle.code} err={bundle.err} />}
                 </StyleCell>
             </Resizable>
         </StyleCellContainer>
