@@ -20,7 +20,7 @@ export const deleteCell = (id: string): DeleteCellAction => {
     };
 };
 
-export const insertCellBefore = (id: string, type: CellType): InsertCellBeforeAction => {
+export const insertCellBefore = (id: string | null, type: CellType): InsertCellBeforeAction => {
     return {
         type: ActionType.INSERT_CELL_BEFORE,
         payload: {

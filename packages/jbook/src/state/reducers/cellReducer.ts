@@ -15,8 +15,19 @@ interface CellState {
 const initialState: CellState = {
     loading: false,
     error: null,
-    order: [],
-    data: {}
+    order: ['1', '2'],
+    data: {
+        '1': {
+            id: '1',
+            type: 'code',
+            content: 'const a = 1;'
+        },
+        '2': {
+            id: '2',
+            type: 'text',
+            content: 'Hello world!'
+        }
+    }
 };
 
 const randomId = () => {
@@ -28,7 +39,7 @@ const reducer = produce((state: CellState = initialState, action: Action): CellS
         case ActionType.MOVE_CELL:
             const { direction, id: payloadId } = action.payload;
             const index = state.order.findIndex((id) => id === payloadId);
-            const targetIndex = direction === 'up' ? index + 1 : index - 1;
+            const targetIndex = direction === 'up' ? index - 1 : index + 1;
 
             if (targetIndex < 0 || targetIndex >= state.order.length) {
                 return state;
