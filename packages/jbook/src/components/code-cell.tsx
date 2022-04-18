@@ -53,22 +53,36 @@ export interface CodeCellProps {
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     const { updateCell, createBundle } = useActions();
     const bundle = useTypedSelector(({ bundles }) => bundles[cell.id]);
+    const cumulativeCode = useTypedSelector((state) => {
+        const { order, data } = state.cells;
+        const orderedCells = order.map((id) => data[id]);
+        const result = [];
+        for (const c of orderedCells) {
+            if (c.type === 'code') {
+                result.push(c.content);
+            }
+            if (c.id === cell.id) {
+                break;
+            }
+        }
+        return result;
+    });
 
     useEffect(() => {
         // Create bundle for the first time
         // no need to wait 1 sec
         if (!bundle) {
-            createBundle(cell.id, cell.content);
+            createBundle(cell.id, cumulativeCode.join('\n'));
             return;
         }
 
         const timer = setTimeout(() => {
-            createBundle(cell.id, cell.content);
+            createBundle(cell.id, cumulativeCode.join('\n'));
         }, 1000);
         return () => {
             clearTimeout(timer);
         };
-    }, [cell.id, cell.content]);
+    }, [cell.id, cumulativeCode.join('\n')]);
 
     const codeEditorProps: CodeEditorProps = {
         initialValue: cell.content,
