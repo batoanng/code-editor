@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import CodeEditor, { CodeEditorProps } from './code-editor';
 import Preview from './preview';
 import Resizable from './resizable';
@@ -18,6 +18,34 @@ const StyleCellContainer = styled.div`
     margin-bottom: 10px;
 `;
 
+const fadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`;
+
+const PreviewWrapperStyle = styled.div`
+    height: 100%;
+    flex-grow: 1;
+    background-color: white;
+`;
+
+const LoadingStyle = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    animation: ${fadeIn} 0.5s;
+`;
+
 export interface CodeCellProps {
     cell: Cell;
 }
@@ -27,8 +55,15 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     const bundle = useTypedSelector(({ bundles }) => bundles[cell.id]);
 
     useEffect(() => {
-        const timer = setTimeout(async () => {
-            await createBundle(cell.id, cell.content);
+        // Create bundle for the first time
+        // no need to wait 1 sec
+        if (!bundle) {
+            createBundle(cell.id, cell.content);
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            createBundle(cell.id, cell.content);
         }, 1000);
         return () => {
             clearTimeout(timer);
@@ -47,7 +82,15 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
                     <Resizable direction="horizontal">
                         <CodeEditor {...codeEditorProps} />
                     </Resizable>
-                    {bundle && <Preview code={bundle.code} err={bundle.err} />}
+                    <PreviewWrapperStyle>
+                        {!bundle || bundle.loading ? (
+                            <LoadingStyle>
+                                <progress className="progress is-small is-primary">Loading...</progress>
+                            </LoadingStyle>
+                        ) : (
+                            <Preview code={bundle.code} err={bundle.err} />
+                        )}
+                    </PreviewWrapperStyle>
                 </StyleCell>
             </Resizable>
         </StyleCellContainer>
