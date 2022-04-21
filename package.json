@@ -23,6 +23,8 @@
         "typescript-plugin-styled-components": "^2.0.0"
     },
     "workspaces": [
-        "packages/jbook"
+        "packages/client",
+        "packages/local-api",
+        "packages/cli"
     ]
 }

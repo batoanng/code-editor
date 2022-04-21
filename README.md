@@ -3,7 +3,14 @@ A CLI to launch an interactive development environment for writing and document 
 
 Users are able to build tech note with markdown syntax, also use code editor to install an build module on an online tool.
 1. This project is built with TS
-2. Monorepo is used by lerna
+2. Monorepo is used by [Lerna](https://lerna.js.org/)
+    1. CLI:
+        - Need to know how to start up the Local API
+    2. Local express API:
+        - Need to serve up the react app
+        - Need to be able to save/load cells from a file
+    3. React app (client):
+        - Need to make its production assets available to either the local api or the public api
 3. Code bundle by [ESBuild](https://esbuild.github.io)
    1. Bundling code remote or locally
       - Remove and extra request to API server, make code executes faster.
@@ -28,4 +35,5 @@ Users are able to build tech note with markdown syntax, also use code editor to 
 4. Use an open source editor to write code: [@monaco-editor/react](https://www.npmjs.com/package/@monaco-editor/react) gives an almost-perfect editing experience immediately
 5. Using [Redux](https://redux.js.org/) to centralize all the states of cell and bundled code, every component can watch to this and do update, prevent props drilling
 6. Share code between code cells:
-   1. In order to reuse code from previous code cells, we can access to redux and join bundled code from cells together, that would help user do not type again a variable or a function, just call them from previous cells is enough. 
+   1. In order to reuse code from previous code cells, we can access to redux and join bundled code from cells together, that would help user do not type again a variable or a function, just call them from previous cells is enough.
+   

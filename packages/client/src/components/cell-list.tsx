@@ -6,6 +6,7 @@ import AddCell from './add-cell';
 
 const CellListStyle = styled.div`
     padding: 20px 0;
+    margin: 0 25px;
 `;
 
 export interface CellListProps {}
