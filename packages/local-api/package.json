@@ -6,7 +6,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "start": "tsc --watch --preserveWatchOutput",
-        "format": "prettier --write \"./{datasources,schema,}/*.{js,ts,jsx,tsx,json,css,md}\"",
+        "format": "prettier --write \"*/*.{js,ts,jsx,tsx,json,css,md}\"",
         "lint": "eslint . --ext ts"
     },
     "devDependencies": {
