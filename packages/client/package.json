@@ -32,7 +32,8 @@
         "web-vitals": "^0.2.4"
     },
     "resolutions": {
-        "styled-components": "^5"
+        "styled-components": "^5",
+        "@types/react": ">= 16.8 <= 17.x"
     },
     "scripts": {
         "start": "react-scripts start",
