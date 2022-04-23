@@ -71,6 +71,21 @@ const reducer = produce((state: CellState = initialState, action: Action): CellS
             const { id, content } = action.payload;
             state.data[id].content = content;
             return state;
+        case ActionType.FETCH_CELL:
+            state.loading = true;
+            state.error = null;
+            return state;
+        case ActionType.FETCH_CELL_COMPLETE:
+            state.order = action.payload.map((cell) => cell.id);
+            state.data = action.payload.reduce((acc, cell) => {
+                acc[cell.id] = cell;
+                return acc;
+            }, {} as CellState['data']);
+            return state;
+        case ActionType.FETCH_CELL_ERROR:
+            state.loading = false;
+            state.error = action.payload;
+            return state;
         default:
             // All statements `return state;` for fixing issue that
             // Immer will mark state can be undefined if no returns

@@ -1,9 +1,10 @@
 import { Dispatch } from 'redux';
 import { Action, DeleteCellAction, InsertCellAfterAction, MoveCellAction, UpdateCellAction } from '../actions';
 import { ActionType } from '../action-types';
-import { CellType } from '../cell';
+import { Cell, CellType } from '../cell';
 import { Direction } from '../direction';
 import bundler from '../../bundler';
+import axios from 'axios';
 
 export const moveCell = (id: string, direction: Direction): MoveCellAction => {
     return {
@@ -62,4 +63,17 @@ export const createBundle = (cellId: string, input: string) => async (dispatch: 
             }
         }
     });
+};
+
+export const fetchCell = () => {
+    return async (dispatch: Dispatch<Action>) => {
+        dispatch({ type: ActionType.FETCH_CELL });
+
+        try {
+            const { cells }: { cells: Cell[] } = await axios.get('/cells');
+            dispatch({ type: ActionType.FETCH_CELL_COMPLETE, payload: cells });
+        } catch (err: any) {
+            dispatch({ type: ActionType.FETCH_CELL_ERROR, payload: err.message });
+        }
+    };
 };
