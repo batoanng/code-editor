@@ -86,6 +86,9 @@ const reducer = produce((state: CellState = initialState, action: Action): CellS
             state.loading = false;
             state.error = action.payload;
             return state;
+        case ActionType.SAVE_CELL_ERROR:
+            state.error = action.payload;
+            return state;
         default:
             // All statements `return state;` for fixing issue that
             // Immer will mark state can be undefined if no returns

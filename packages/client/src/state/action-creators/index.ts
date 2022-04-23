@@ -5,6 +5,7 @@ import { Cell, CellType } from '../cell';
 import { Direction } from '../direction';
 import bundler from '../../bundler';
 import axios from 'axios';
+import { RootState } from '../reducers';
 
 export const moveCell = (id: string, direction: Direction): MoveCellAction => {
     return {
@@ -74,6 +75,20 @@ export const fetchCell = () => {
             dispatch({ type: ActionType.FETCH_CELL_COMPLETE, payload: cells });
         } catch (err: any) {
             dispatch({ type: ActionType.FETCH_CELL_ERROR, payload: err.message });
+        }
+    };
+};
+
+export const saveCell = () => {
+    return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+        const {
+            cells: { data, order }
+        } = getState();
+        const cells = order.map((id) => data[id]);
+        try {
+            await axios.post('/cells', { cells });
+        } catch (err: any) {
+            dispatch({ type: ActionType.SAVE_CELL_ERROR, payload: err.message });
         }
     };
 };
