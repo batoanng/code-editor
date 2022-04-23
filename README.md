@@ -26,9 +26,9 @@ Users are able to build tech note with markdown syntax, also use code editor to 
    2. Find list of cells store in a file (named provided to the CLI) and send those back.
    3. Take the list of cells and store them into a file.
 2. **Issues**: 
-   - when doing active development, Local API must respond the change from browser to React App and vice versa.
-   
-   => Solution: use [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) to reflect the changes.
+   - When shipping React App to browser, we need to deal with 2 cases: after going production, React App is a build folder and when doing active development, we need to use develop version (build version takes a lot of time when has changes)
+
+   => Solution: use [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) to reflect the changes when doing active development and load static when going production.
 
 ### React App
 1. Code bundle by [ESBuild](https://esbuild.github.io)
