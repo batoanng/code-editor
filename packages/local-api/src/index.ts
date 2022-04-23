@@ -1,5 +1,18 @@
+import express from 'express';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+
 export const serve = (port: number, filename: string, dir: string) => {
-    console.log('Serving traffic on port', port);
-    console.log('Serving/Fetching cells from', filename);
-    console.log('That file is in dir', dir);
+    const app = express();
+
+    app.use(
+        createProxyMiddleware({
+            target: 'http://localhost:3000', // Point to React app,
+            ws: true,
+            logLevel: 'silent'
+        })
+    );
+
+    return new Promise<void>((resolve, reject) => {
+        app.listen(port, resolve).on('error', reject);
+    });
 };
