@@ -5,7 +5,8 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "start": "nodemon src/index.ts",
+        "serve": "node dist/index.js serve",
+        "start": "tsc --watch --preserveWatchOutput",
         "format": "prettier --write \"*/*.{js,ts,jsx,tsx,json,css,md}\"",
         "lint": "eslint . --ext ts"
     },

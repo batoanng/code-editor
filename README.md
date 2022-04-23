@@ -1,15 +1,16 @@
 # Online Code Editor
 A CLI to launch an interactive development environment for writing and document code.
 
+## Introduction
 Users are able to build tech note with markdown syntax, also use code editor to install an build module on an online tool.
 1. This project is built with TS
 2. Monorepo is used by [Lerna](https://lerna.js.org/)
     1. CLI:
         - Need to know how to start up the Local API
-    2. Local express API:
+    2. Local Express API:
         - Need to serve up the react app
         - Need to be able to save/load cells from a file
-    3. React app (client):
+    3. React App (client):
         - Need to make its production assets available to either the local api or the public api
 3. Code bundle by [ESBuild](https://esbuild.github.io)
    1. Bundling code remote or locally
@@ -37,3 +38,13 @@ Users are able to build tech note with markdown syntax, also use code editor to 
 6. Share code between code cells:
    1. In order to reuse code from previous code cells, we can access to redux and join bundled code from cells together, that would help user do not type again a variable or a function, just call them from previous cells is enough.
    
+## Detailed design
+1. CLI
+    - This is the tool that users can run from the command line.
+    - This module contains code to start up local API
+    - Allow user to persist their code/text and share with others
+    - Allow user to choose specific file to open up or save cells into.
+    - Technicals: [Commander](https://www.npmjs.com/package/commander)
+
+2. Local Express API
+3. React App
