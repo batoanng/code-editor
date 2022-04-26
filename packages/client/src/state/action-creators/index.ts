@@ -85,7 +85,6 @@ export const saveCell = () => {
             cells: { data, order }
         } = getState();
         const cells = order.map((id) => data[id]);
-        if (cells.length === 0) return;
         try {
             await axios.post('/cells', { cells });
         } catch (err: any) {

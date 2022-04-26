@@ -14,17 +14,11 @@ export interface CellListProps {}
 
 const CellList: React.FC<CellListProps> = () => {
     const cells = useTypedSelector(({ cells: { data, order } }) => order.map((id) => data[id]));
-    const { fetchCell, saveCell } = useActions();
+    const { fetchCell } = useActions();
 
     useEffect(() => {
         fetchCell();
     }, []);
-
-    useEffect(() => {
-        saveCell();
-        // hacking way to deep compare
-        // can be exchange with immutable object
-    }, [JSON.stringify(cells)]);
 
     const renderCells = cells.map((cell) => (
         <div key={cell.id}>
