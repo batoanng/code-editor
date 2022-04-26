@@ -11,6 +11,7 @@ export const persistMiddleware = ({
     dispatch: Dispatch<Action>;
     getState: () => RootState;
 }) => {
+    let timer: any;
     return (next: (action: Action) => void) => {
         return (action: Action) => {
             next(action);
@@ -22,7 +23,12 @@ export const persistMiddleware = ({
                     ActionType.INSERT_CELL_AFTER
                 ].includes(action.type)
             ) {
-                saveCell()(dispatch, getState);
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(() => {
+                    saveCell()(dispatch, getState);
+                }, 500);
             }
         };
     };
