@@ -23,7 +23,7 @@ export const createCellsRouter = (filename: string, dir: string) => {
             if (err.code === 'ENOENT') {
                 // if file is not existed
                 // create file and add default cells
-                await fs.writeFile(fullPath, [], 'utf-8');
+                await fs.writeFile(fullPath, '[]', 'utf-8');
                 res.send([]);
             } else {
                 throw err;
