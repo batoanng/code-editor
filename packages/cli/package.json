@@ -8,13 +8,16 @@
     "publishConfig": {
         "access": "public"
     },
+    "bin": "dist/index.js",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
         "serve": "node dist/index.js serve",
         "start": "tsc --watch --preserveWatchOutput",
+        "build": "tsc",
         "format": "prettier --write \"*/*.{js,ts,jsx,tsx,json,css,md}\"",
-        "lint": "eslint . --ext ts"
+        "lint": "eslint . --ext ts",
+        "prepublishOnly": "yarn build"
     },
     "devDependencies": {
         "@types/express": "^4.17.13",
