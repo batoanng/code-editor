@@ -1,4 +1,4 @@
-# Online Code Editor
+# Code Editor
 A tool to launch an interactive development environment for writing and document code.
 
 ## Introduction

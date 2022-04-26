@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { serve } from 'local-api';
+import { serve } from '@joker7t/code-editor-local-api';
 import path from 'path';
 import process from 'process';
 
