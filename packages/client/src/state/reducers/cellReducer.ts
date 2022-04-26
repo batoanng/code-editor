@@ -15,19 +15,8 @@ interface CellState {
 const initialState: CellState = {
     loading: false,
     error: null,
-    order: ['1', '2'],
-    data: {
-        '1': {
-            id: '1',
-            type: 'code',
-            content: 'const a = 1;'
-        },
-        '2': {
-            id: '2',
-            type: 'text',
-            content: 'Click to edit'
-        }
-    }
+    order: [],
+    data: {}
 };
 
 const randomId = () => {
