@@ -17,7 +17,7 @@
         "build": "tsc",
         "format": "prettier --write \"*/*.{js,ts,jsx,tsx,json,css,md}\"",
         "lint": "eslint . --ext ts",
-        "prepublishOnly": "esbuild src/index.ts --platform=node --outfile=dist/index.js --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\""
+        "prepublishOnly": "esbuild src/index.ts --define:process.env.NODE_ENV=\\\"production\\\" --platform=node --outfile=dist/index.js --bundle --minify"
     },
     "devDependencies": {
         "@joker7t/code-editor-local-api": "^1.0.2",

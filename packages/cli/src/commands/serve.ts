@@ -1,7 +1,6 @@
 import { Command } from 'commander';
 import { serve } from '@joker7t/code-editor-local-api';
 import path from 'path';
-import process from 'process';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
