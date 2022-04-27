@@ -1,7 +1,7 @@
 {
     "author": "Toan Nguyen Ba",
     "name": "@joker7t/code-editor-client",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "files": [
         "build"
     ],
@@ -43,6 +43,7 @@
         "@types/react-dom": "^16.9.10",
         "@types/react-redux": "^7.1.23",
         "@types/react-resizable": "^1.7.4",
+        "@types/styled-components": "^5.1.24",
         "@uiw/react-md-editor": "^3.11.2",
         "axios": "^0.26.1",
         "bulmaswatch": "^0.8.1",
@@ -59,7 +60,6 @@
         "redux-thunk": "^2.4.1",
         "styled-components": "^5.3.5",
         "typescript": "^4.1.3",
-        "web-vitals": "^0.2.4",
-        "@types/styled-components": "^5.1.24"
+        "web-vitals": "^0.2.4"
     }
 }
