@@ -32,5 +32,6 @@
         "dotenv": "^16.0.0",
         "express": "^4.17.1",
         "http-proxy-middleware": "^2.0.6"
-    }
+    },
+    "gitHead": "700349ff4af481dca31979d86cad1d567ab9682f"
 }

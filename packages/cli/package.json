@@ -32,5 +32,6 @@
     },
     "dependencies": {
         "@joker7t/code-editor-client": "^1.0.0"
-    }
+    },
+    "gitHead": "700349ff4af481dca31979d86cad1d567ab9682f"
 }
