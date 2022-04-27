@@ -1,7 +1,7 @@
 {
     "author": "Toan Nguyen Ba",
     "name": "@joker7t/code-editor",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "files": [
         "dist"
     ],
@@ -31,7 +31,7 @@
     },
     "dependencies": {
         "@joker7t/code-editor-client": "^1.0.1",
-        "@joker7t/code-editor-local-api": "^1.1.1"
+        "@joker7t/code-editor-local-api": "^1.1.2"
     },
     "gitHead": "700349ff4af481dca31979d86cad1d567ab9682f"
 }

@@ -1,7 +1,7 @@
 {
     "author": "Toan Nguyen Ba",
     "name": "@joker7t/code-editor-local-api",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "files": [
         "dist"
     ],
