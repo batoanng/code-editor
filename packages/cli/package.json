@@ -20,7 +20,6 @@
         "prepublishOnly": "esbuild src/index.ts --define:process.env.NODE_ENV=\\\"production\\\" --platform=node --outfile=dist/index.js --bundle --minify"
     },
     "devDependencies": {
-        "@joker7t/code-editor-local-api": "^1.0.2",
         "@types/express": "^4.17.13",
         "@types/node": "^17.0.23",
         "commander": "^9.2.0",
@@ -31,7 +30,8 @@
         "typescript": "^3.2.4"
     },
     "dependencies": {
-        "@joker7t/code-editor-client": "^1.0.1"
+        "@joker7t/code-editor-client": "^1.0.1",
+        "@joker7t/code-editor-local-api": "^1.0.2"
     },
     "gitHead": "700349ff4af481dca31979d86cad1d567ab9682f"
 }
