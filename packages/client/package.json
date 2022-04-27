@@ -1,7 +1,7 @@
 {
     "author": "Toan Nguyen Ba",
     "name": "@joker7t/code-editor-client",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "files": [
         "build"
     ],

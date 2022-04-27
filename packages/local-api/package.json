@@ -1,7 +1,7 @@
 {
     "author": "Toan Nguyen Ba",
     "name": "@joker7t/code-editor-local-api",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "files": [
         "dist"
     ],
@@ -27,7 +27,7 @@
         "typescript": "^3.2.4"
     },
     "dependencies": {
-        "@joker7t/code-editor-client": "^1.0.0",
+        "@joker7t/code-editor-client": "^1.0.1",
         "cors": "^2.8.5",
         "dotenv": "^16.0.0",
         "express": "^4.17.1",
