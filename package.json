@@ -1,5 +1,6 @@
 {
     "name": "online-code-editor",
+    "private": true,
     "scripts": {
         "start": "lerna run start --parallel",
         "lint": "lerna run lint --parallel",
@@ -29,6 +30,5 @@
         "packages/client",
         "packages/local-api",
         "packages/cli"
-    ],
-    "version": "0.0.0"
+    ]
 }

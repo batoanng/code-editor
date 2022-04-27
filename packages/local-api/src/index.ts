@@ -11,7 +11,7 @@ export const serve = (port: number, filename: string, dir: string, useProxy: boo
     if (useProxy) {
         app.use(
             createProxyMiddleware({
-                target: 'http://localhost:3000', // Point to React app,
+                target: 'http://localhost:3000',
                 ws: true,
                 logLevel: 'silent'
             })

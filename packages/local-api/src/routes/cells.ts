@@ -5,24 +5,24 @@ import path from 'path';
 interface Cell {
     id: string;
     content: string;
-    type: 'code' | 'text';
+    type: 'text' | 'code';
 }
 
 export const createCellsRouter = (filename: string, dir: string) => {
     const router = express.Router();
     router.use(express.json());
 
-    const fullPath = path.join(dir, 'books', filename);
+    const fullPath = path.join(dir, filename);
 
-    router.get('/cells', async (req: express.Request, res: express.Response) => {
+    router.get('/cells', async (req, res) => {
         try {
+            // Read the file
             const result = await fs.readFile(fullPath, { encoding: 'utf-8' });
+
             res.send(JSON.parse(result));
         } catch (err) {
             // @ts-ignore
             if (err.code === 'ENOENT') {
-                // if file is not existed
-                // create file and add default cells
                 await fs.writeFile(fullPath, '[]', 'utf-8');
                 res.send([]);
             } else {
@@ -31,9 +31,14 @@ export const createCellsRouter = (filename: string, dir: string) => {
         }
     });
 
-    router.post('/cells', async (req: express.Request, res: express.Response) => {
+    router.post('/cells', async (req, res) => {
+        // Take the list of cells from the request obj
+        // serialize them
         const { cells }: { cells: Cell[] } = req.body;
+
+        // Write the cells into the file
         await fs.writeFile(fullPath, JSON.stringify(cells), 'utf-8');
+
         res.send({ status: 'ok' });
     });
 

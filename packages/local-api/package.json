@@ -12,24 +12,20 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "start": "tsc --watch --preserveWatchOutput",
-        "build": "tsc",
-        "format": "prettier --write \"*/*.{js,ts,jsx,tsx,json,css,md}\"",
-        "lint": "eslint . --ext ts",
-        "prepublishOnly": "yarn build"
+        "prepublishOnly": "tsc",
+        "build": "tsc"
     },
+    "keywords": [],
     "devDependencies": {
-        "@types/express": "^4.17.13",
-        "debug": "^3.2.6",
-        "nodemon": "^2.0.15",
-        "prettier": "^2.6.1",
-        "typescript": "^3.2.4"
+        "@types/cors": "^2.8.9",
+        "@types/express": "^4.17.11",
+        "typescript": "^4.1.3",
+        "prettier": "^2.6.1"
     },
     "dependencies": {
         "@joker7t/code-editor-client": "^1.0.1",
         "cors": "^2.8.5",
-        "dotenv": "^16.0.0",
         "express": "^4.17.1",
-        "http-proxy-middleware": "^2.0.6"
-    },
-    "gitHead": "700349ff4af481dca31979d86cad1d567ab9682f"
+        "http-proxy-middleware": "^1.0.6"
+    }
 }
